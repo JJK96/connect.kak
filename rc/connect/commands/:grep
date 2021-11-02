@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export BUFNAME=*grep*
+cat | :fifo
+:send set buffer filetype grep
+:send ansi-render
