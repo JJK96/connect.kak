@@ -1,6 +1,8 @@
 #!/bin/sh
 
-export BUFNAME=*grep*
-cat | :fifo
+export BUFNAME=${BUFNAME:-*grep*}
+# Create buffer and set settings
+:send edit! -scratch "$BUFNAME"
 :send set buffer filetype grep
-:send ansi-render
+:send ansi-enable
+cat | :fifo
